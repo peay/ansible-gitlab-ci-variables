@@ -1,0 +1,46 @@
+---
+# Manage a single Gitlab CI variable in a project
+
+#
+# `project_gitlab_ci_variables` is defined by the calling task,
+# `project_ci_variables.yaml`
+#
+# `gitlab_ci_variable` is a dictionnary of the form
+#
+#    key: VARIABLE
+#    value: xxxx
+#
+
+- name: "Get variable value: {{ gitlab_ci_variable.key }}"
+  uri:
+    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables/{{ gitlab_ci_variable.key }}"
+    method: GET
+    headers:
+      PRIVATE-TOKEN: "{{ gitlab_token }}"
+    status_code: 200, 404
+    validate_certs: "no"
+  register: gitlab_ci_variable_request
+
+- name: "Create variable: {{ gitlab_ci_variable.key }}"
+  when: gitlab_ci_variable_request.status == 404
+  uri:
+    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables"
+    method: POST
+    headers:
+      PRIVATE-TOKEN: "{{ gitlab_token }}"
+    status_code: 201
+    body: "key={{ gitlab_ci_variable.key }}&value={{ gitlab_ci_variable.value | urlencode }}"
+    validate_certs: "no"
+
+- name: "Update variable: {{ gitlab_ci_variable.key }}"
+  when: (gitlab_ci_variable_request.status == 200) and
+        (gitlab_ci_variable_request.json.value != gitlab_ci_variable.value)
+  uri:
+    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables/{{ gitlab_ci_variable.key }}"
+    method: PUT
+    headers:
+      PRIVATE-TOKEN: "{{ gitlab_token }}"
+    status_code: 200
+    body: "value={{ gitlab_ci_variable.value | urlencode }}"
+    validate_certs: "no"
+  changed_when: true

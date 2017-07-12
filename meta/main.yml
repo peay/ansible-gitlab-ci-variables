@@ -1,0 +1,19 @@
+galaxy_info:
+  author: peay
+  description: Manage Gitlab CI build variables
+  license: MIT
+  min_ansible_version: 1.2
+
+  galaxy_tags:
+    - gitlab
+    - gitlabci
+    - ci
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+    - name: Debian
+      versions:
+        - jessie

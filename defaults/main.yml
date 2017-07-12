@@ -1,0 +1,18 @@
+---
+
+# API token for Gitlab
+gitlab_token: "XXXXXXXXXXXXXXXXXXXX"
+
+# API URL for Gitlab
+gitlab_api_url: https://some-url-to-gitlab.com/api/v4
+
+# Variables to manage for each Gitlab project
+gitlab_ci_variables:
+  - project: "group/project"
+    variables:
+      - key: VARIABLE_1
+        value: value
+
+# When enabled, check for unknown variables in Gitlab
+# not managed by this role
+gitlab_ci_check_unknown: true

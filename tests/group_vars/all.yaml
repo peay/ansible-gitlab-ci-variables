@@ -1,0 +1,15 @@
+---
+
+# Variables to manage for each Gitlab project
+gitlab_ci_variables:
+  - project: "peay/my-awesome-project"
+    variables:
+      - key: VARIABLE_TO_CREATE_{{ range(1, 10000000) | random }}
+        value: variable-created
+      - key: VARIABLE_TO_UPDATE
+        value: variable-updated-{{ range(1, 10000000) | random }}
+      - key: VARIABLE_TO_NOT_UPDATE
+        value: |-
+          =%--#
+          line
+          line

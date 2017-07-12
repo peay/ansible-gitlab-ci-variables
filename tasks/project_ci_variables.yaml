@@ -1,0 +1,23 @@
+---
+# Manage all the Gitlab CI variables for a given project
+
+#
+# `project_gitlab_ci_variables` is a dictionnary of the form
+#
+#    project: <project path>
+#    variables:
+#      - key: VARIABLE
+#        value: xxxx
+#        ...
+#
+
+- set_fact:
+    project_gitlab_ci: "{{ project_gitlab_ci_variables.project | replace('/', '%2F') }}"
+
+- include: "ci_variable.yaml"
+  with_items: "{{ project_gitlab_ci_variables.variables }}"
+  loop_control:
+    loop_var: gitlab_ci_variable
+
+- include: "unknown_ci_variables.yaml"
+  when: gitlab_ci_check_unknown

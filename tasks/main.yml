@@ -1,0 +1,13 @@
+---
+
+- name: "Check per-project Gitlab CI variables"
+  fail:
+    msg: "missing required variable 'gitlab_ci_variables'"
+  when: gitlab_ci_variables is not defined
+
+# Manage Gitlab CI variables for each project
+- name: "Manage Gitlab CI variables for project"
+  include: "project_ci_variables.yaml"
+  with_items: "{{ gitlab_ci_variables }}"
+  loop_control:
+    loop_var: project_gitlab_ci_variables
