@@ -2,7 +2,7 @@ language: python
 python: '2.7'
 env:
   global:
-  - GITLAB_API_URL=https://gitlab.com/api/v4/
+  - GITLAB_API_URL=https://gitlab.com/api/v4
   - secure: ilLwn30SCF0TvK3dfrmB4ZcSNoxQNiKUV2/L0TzUL63gevOFNIIqVPwXVJMNHaZAh8J9qAOAQSMa4gPew7BOpwHN3UqQ8rz2bvELqcJlTt6WdTbDT2y6N8O88PpqAiGrSmi/9m2OKauKVNSajx1XtTHetAtQTs7sbDn2XWBwrmxEiDQK8L/w0b06JZdKAEyMl8Dr/V07dKMkq9VUM3NGJw16NJdUUdr+otjuvqxpfdJiPRq/BdM5kOqHXQ4Ia1SUFn19WCv8G9mMY4PdOT1ebMwFvi2LWAAa2vYzFSRdMA/QXDxeDL8Id9pCoo6XWgqwyTuGkeZn56vt9ZB50Ptj7+weaBrGU9Ijwt1kQi7fO3K3REt6XB4G7umq8nZLGO+HxZsejA5ZkqKAFzqHIVtG7Q6wRO12gdP7HWhALt3Fmr5FTeT1IBirfAe7kPITl+BsBvVCPadU031mrNyZNtX7wPIjefyvmriFbUj5FjaL1Mk/Uq9ZEatNf8BefecXd/QPvnnjUHMqA6IGCiFYlzypMr6lF+FFs+t5Y0hvq/XQO5Q1c638KVyjFgnuVP/SEp013tf2ZEzn+5DtainQdclk62kGhbwDNY2uXZglLCQy1ZXwNbiDT6eiJ+2ulu6+iYeaNh+AcD+vke/vbWy0xw3Rm5lEIpifMrQuhhNaVPdUBMk=
 
 before_install:
