@@ -42,16 +42,26 @@ manages variables for two projects.
 ```yaml
 # Variables to manage for each Gitlab project
 gitlab_ci_variables:
-  - project: "group/project"
+  - name: "group/project"
+    kind: "project"
     variables:
       - key: VARIABLE_1
         value: value
 
-  - project: "group/project2"
+  - name: "group/project2"
+    kind: "project"
     variables:
       - key: VARIABLE_1
         value: value
       - key: VARIABLE_2
+        value: value
+
+  - name: "group"
+    kind: "group"
+    variables:
+      - key: VARIABLE_3
+        value: value
+      - key: VARIABLE_4
         value: value
 ```
 

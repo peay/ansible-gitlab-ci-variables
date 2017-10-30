@@ -13,7 +13,7 @@
 
 - name: "Get variable value: {{ gitlab_ci_variable.key }}"
   uri:
-    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables/{{ gitlab_ci_variable.key }}"
+    url: "{{ gitlab_api_url }}/{{ kind_gitlab_ci }}s/{{ project_gitlab_ci }}/variables/{{ gitlab_ci_variable.key }}"
     method: GET
     headers:
       PRIVATE-TOKEN: "{{ gitlab_token }}"
@@ -24,7 +24,7 @@
 - name: "Create variable: {{ gitlab_ci_variable.key }}"
   when: gitlab_ci_variable_request.status == 404
   uri:
-    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables"
+    url: "{{ gitlab_api_url }}/{{ kind_gitlab_ci }}s/{{ project_gitlab_ci }}/variables"
     method: POST
     headers:
       PRIVATE-TOKEN: "{{ gitlab_token }}"
@@ -36,7 +36,7 @@
   when: (gitlab_ci_variable_request.status == 200) and
         (gitlab_ci_variable_request.json.value != gitlab_ci_variable.value)
   uri:
-    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables/{{ gitlab_ci_variable.key }}"
+    url: "{{ gitlab_api_url }}/{{ kind_gitlab_ci }}s/{{ project_gitlab_ci }}/variables/{{ gitlab_ci_variable.key }}"
     method: PUT
     headers:
       PRIVATE-TOKEN: "{{ gitlab_token }}"

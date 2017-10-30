@@ -4,7 +4,8 @@
 #
 # `project_gitlab_ci_variables` is a dictionnary of the form
 #
-#    project: <project path>
+#    name: <project path>
+#    kind: project
 #    variables:
 #      - key: VARIABLE
 #        value: xxxx
@@ -12,7 +13,10 @@
 #
 
 - set_fact:
-    project_gitlab_ci: "{{ project_gitlab_ci_variables.project | replace('/', '%2F') }}"
+    kind_gitlab_ci: "{{ project_gitlab_ci_variables.kind | default('project') }}"
+
+- set_fact:
+    project_gitlab_ci: "{{ project_gitlab_ci_variables.name | replace('/', '%2F') }}"
 
 - include: "ci_variable.yaml"
   with_items: "{{ project_gitlab_ci_variables.variables }}"

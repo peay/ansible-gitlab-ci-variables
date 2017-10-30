@@ -8,7 +8,8 @@ gitlab_api_url: https://some-url-to-gitlab.com/api/v4
 
 # Variables to manage for each Gitlab project
 gitlab_ci_variables:
-  - project: "group/project"
+  - name: "group/project"
+    kind: "project"
     variables:
       - key: VARIABLE_1
         value: value
