@@ -22,8 +22,7 @@ script:
     -e "gitlab_api_url=$GITLAB_API_URL" \
     -e "gitlab_token=$GITLAB_TOKEN" \
     -e "gitlab_ci_check_unknown=false" \
-    tests/gitlab-ci-variables.yml \
-  | grep 'ok=11.*changed=1.*unreachable=0.*failed=0'
+    tests/gitlab-ci-variables.yml
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
