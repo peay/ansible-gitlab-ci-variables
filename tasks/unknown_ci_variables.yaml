@@ -3,7 +3,7 @@
 # If require, remove variables that are not tracked from ansible
 - name: "List variables"
   uri:
-    url: "{{ gitlab_api_url }}/projects/{{ project_gitlab_ci }}/variables"
+    url: "{{ gitlab_api_url }}/{{ kind_gitlab_ci }}s/{{ project_gitlab_ci }}/variables"
     method: GET
     headers:
       PRIVATE-TOKEN: "{{ gitlab_token }}"
