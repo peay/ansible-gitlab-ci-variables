@@ -42,27 +42,18 @@ manages variables for two projects.
 ```yaml
 # Variables to manage for each Gitlab project
 gitlab_ci_variables:
-  - name: "group/project"
-    kind: "project"
+  - project: "group/project1"
     variables:
       - key: VARIABLE_1
         value: value
 
-  - name: "group/project2"
-    kind: "project"
+  - project: "group/project2"
     variables:
       - key: VARIABLE_1
         value: value
       - key: VARIABLE_2
         value: value
-
-  - name: "group"
-    kind: "group"
-    variables:
-      - key: VARIABLE_3
-        value: value
-      - key: VARIABLE_4
-        value: value
+        
 ```
 
 By default, the role will also check for Gitlab CI variables that
