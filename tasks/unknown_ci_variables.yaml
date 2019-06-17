@@ -8,7 +8,7 @@
     headers:
       PRIVATE-TOKEN: "{{ gitlab_token }}"
     status_code: 200
-    validate_certs: "no"
+    validate_certs: "{{ gitlab_validate_certs }}"
   register: gitlab_ci_variable_list_request
 
 - set_fact:

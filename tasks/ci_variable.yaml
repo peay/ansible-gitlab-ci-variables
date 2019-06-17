@@ -18,7 +18,7 @@
     headers:
       PRIVATE-TOKEN: "{{ gitlab_token }}"
     status_code: 200, 404
-    validate_certs: "no"
+    validate_certs: "{{ gitlab_validate_certs }}"
   register: gitlab_ci_variable_request
 
 - name: "Create variable: {{ gitlab_ci_variable.key }}"
@@ -30,7 +30,7 @@
       PRIVATE-TOKEN: "{{ gitlab_token }}"
     status_code: 201
     body: "key={{ gitlab_ci_variable.key }}&value={{ gitlab_ci_variable.value | urlencode }}"
-    validate_certs: "no"
+    validate_certs: "{{ gitlab_validate_certs }}"
 
 - name: "Update variable: {{ gitlab_ci_variable.key }}"
   when: (gitlab_ci_variable_request.status == 200) and
@@ -42,5 +42,5 @@
       PRIVATE-TOKEN: "{{ gitlab_token }}"
     status_code: 200
     body: "value={{ gitlab_ci_variable.value | urlencode }}"
-    validate_certs: "no"
+    validate_certs: "{{ gitlab_validate_certs }}"
   changed_when: true

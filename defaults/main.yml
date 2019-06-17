@@ -17,3 +17,6 @@ gitlab_ci_variables:
 # When enabled, check for unknown variables in Gitlab
 # not managed by this role
 gitlab_ci_check_unknown: true
+
+# When it set to "yes", it enable SSL certificates or no
+gitlab_validate_certs: "no"
